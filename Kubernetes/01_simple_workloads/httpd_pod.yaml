@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: httpd
-      image: httpd:2
+      image: httpd
       ports:
         - containerPort: 80
