@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1 
+kind: Deployment #Controller
+metadata:
+  name: nginx-lb-deploy
+  labels:
+    application: nginx
+spec: 
+  replicas: 5
+  selector:
+    matchLabels:
+      application: nginx
+  template:
+    metadata:
+      name: nginx
+      labels:
+        application: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-lb-service
+  labels:
+    application: nginx 
+spec:
+  selector: 
+    application: nginx
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
