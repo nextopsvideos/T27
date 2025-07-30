@@ -8,4 +8,4 @@ spec:
       storage: 1Ti
   accessModes:
     - ReadWriteMany
-  storageClassName: standard-rwx
+  storageClassName: custom-fs-sc
