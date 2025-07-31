@@ -1,0 +1,15 @@
+apiVersion: policy/v1 
+kind: PodDisruptionBudget #planned
+metadata:
+  name: my-app-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: my-app
+  
+# total worker nodes 3 
+# 1st worker node - 7x0c - 0 copies - drain - rebooting
+# 2nd worker node - wr7h - 0 copies - drain - rebooting
+# 3rd worker node - x7c4 - 4 copies - drain - 3 copies will be killed, but pdb makes sure that 1 copy
+#                                             will not be killed, node will not be drained, cannot be rebooted 
