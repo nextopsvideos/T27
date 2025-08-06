@@ -1,0 +1,5 @@
+controller:
+  resources:
+    requests:
+      cpu: 200m   #100m
+      memory: 180Mi  #90Mi
