@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "myrg" {
 }
 
 resource "azurerm_virtual_network" "myvnet" {
-   resource_group_name = azurerm_resource_group.myrg.name
+   resource_group_name = azurerm_resource_group.myrg.name  #"FirstRG"
    location            = azurerm_resource_group.myrg.location
    name                = "FirstVNET"
    address_space       = [ "10.3.0.0/16" ]
