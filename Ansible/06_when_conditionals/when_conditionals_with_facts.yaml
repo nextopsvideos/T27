@@ -1,0 +1,22 @@
+- name: Gathering facts
+  hosts: clients, winservers
+  remote_user: root
+
+  tasks:
+  - name: Install nginx if it is Ubuntu Linux  #192.168.1.107
+    apt:
+      name: nginx 
+      state: present
+    when: ansible_os_family == "Debian"
+ 
+  - name: Install httpd if it is RedHat Linux # skipped
+    apt:
+      name: httpd 
+      state: present
+    when: ansible_os_family == "RedHat"
+  
+  - name: Install IIS if it is Windows Server # 192.168.1.109
+    win_feature:
+      name: Web-Server
+      state: present
+    when: ansible_os_family == "Windows"

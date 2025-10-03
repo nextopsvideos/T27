@@ -1,0 +1,13 @@
+- name: Gathering facts
+  hosts: clients
+  remote_user: root
+  vars:
+    secret: P2ssword@123
+
+  tasks:
+  - name: create user account with plain password
+    user:
+      name: user1 
+      password: "{{ secret }}"
+      shell: /bin/bash
+      state: present

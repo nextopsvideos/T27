@@ -1,0 +1,19 @@
+- name: Create a dynamic var during playbook execution
+  hosts: clients
+  remote_user: root
+
+  tasks:
+  - name: creating hostname dyn var 
+    command:
+      cmd: hostname
+    register: hostname_var 
+
+  - name: print the value from earlier variable 
+    debug:
+      msg: "{{ hostname_var.stdout }}"
+  
+  - name: install tree package only on client02
+    apt:
+      name: tree 
+      state: present 
+    when: hostname_var.stdout == "client02"

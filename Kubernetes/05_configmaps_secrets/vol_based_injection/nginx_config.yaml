@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-prod-config 
-data: 
+  name: nginx-config-cm
+data:
   default.conf: |
     server {
-    listen       8080;
-    listen  [::]:8080;
+    listen       8000;
+    listen  [::]:8000;
     server_name  localhost;
 
     #access_log  /var/log/nginx/host.access.log  main;

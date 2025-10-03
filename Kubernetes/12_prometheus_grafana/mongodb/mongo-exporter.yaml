@@ -4,7 +4,7 @@ metadata:
   name: mongodb-exporter
   labels:
     app: mongodb-exporter
-    release: prom-stack
+    release: k8s-prom-stack
 spec:
   replicas: 1
   selector:
@@ -30,7 +30,7 @@ metadata:
   name: mongodb-exporter
   labels:
     app: mongodb-exporter
-    release: prom-stack
+    release: k8s-prom-stack
 spec:
   selector:
     app: mongodb-exporter

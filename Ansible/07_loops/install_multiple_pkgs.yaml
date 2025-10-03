@@ -1,0 +1,28 @@
+- name: Gathering facts
+  hosts: clients
+  remote_user: root
+
+  vars:
+    pkgs_list:
+      - tree 
+      - wget
+      - curl
+      - vim
+      - nginx
+
+    service_list:
+      - sshd
+      - cron 
+
+  tasks:
+  - name: install common pkgs 
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items: "{{ pkgs_list }}"
+  
+  - name: restart list of services 
+    service:
+      name: "{{ item }}"
+      state: restarted
+    with_items: "{{ service_list }}"

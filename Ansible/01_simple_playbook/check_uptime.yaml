@@ -1,0 +1,8 @@
+- name: Execute uptime on remote machines
+  hosts: clients
+  remote_user: root 
+
+  tasks:
+  - name: run uptime command 
+    shell:
+      cmd: uptime

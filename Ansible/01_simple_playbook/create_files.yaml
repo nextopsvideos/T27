@@ -1,0 +1,14 @@
+- name: Create files on remote machines
+  hosts: clients
+  remote_user: root 
+
+  tasks:
+  - name: create a directory 
+    file:
+      path: /home/charan/new_dir
+      state: directory 
+  
+  - name: create a file in above directory 
+    file:
+      path: /home/charan/new_dir/new_file.txt
+      state: touch
